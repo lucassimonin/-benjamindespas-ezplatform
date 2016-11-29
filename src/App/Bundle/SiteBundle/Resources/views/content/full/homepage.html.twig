@@ -1,29 +1,19 @@
 {% extends "AppSiteBundle::pagelayout.html.twig" %}
-{% block content %}
-    <nav id="mainNav" class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header padding-navbar">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">{{ 'app.global.title'|trans }}</a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        <a class="page-scroll" href="#news">{{ 'app.title.news'|trans }}</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">{{ 'app.title.biography'|trans }}</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">{{ 'app.title.gallery'|trans }}</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+{% block top_content %}
+    <header>
+        <div class="container-fluid">
+            <div class="col-md-6 col-md-push-6">
+                {{ ez_render_field(content, 'image_top', {
+                    parameters: {
+                        alias: 'top_image',
+                        class: 'img-responsive img-header'
+                    }
+                }) }}
+            </div>
+            <div class="col-md-6 text-center col-md-pull-6" id="header-text">
+                <h1>{{ 'app.title_site'|trans|raw }}</h1>
+                <ul class="nav sociaux">
                     {% if not ez_is_field_empty(content, 'facebook_url') %}
                         <li>
                             <a class="btn btn-social-icon btn-fb" href="{{ ez_field_value(content, 'facebook_url') }}" target="_blank"><i class="fa fa-facebook-official"></i></a>
@@ -34,18 +24,29 @@
                             <a class="btn btn-social-icon btn-instagram" href="{{ ez_field_value(content, 'instagram_url') }}" target="_blank"><i class="fa fa-instagram"></i></a>
                         </li>
                     {% endif %}
+                    {% if not ez_is_field_empty(content, 'linkedin_url') %}
+                        <li>
+                            <a class="btn btn-social-icon btn-linkedin" href="{{ ez_field_value(content, 'linkedin_url') }}" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+                        </li>
+                    {% endif %}
                     {% if not ez_is_field_empty(content, 'email') %}
                         <li>
                             <a class="btn btn-social-icon btn-contact page-scroll" href="mailto:{{ ez_field_value(content, 'email') }}"><i class="fa fa-envelope-o"></i></a>
                         </li>
                     {% endif %}
-                    {{ render( controller( 'AppSiteBundle:Common:languages', {'routeRef': ez_route()} ) ) }}
                 </ul>
+                <a class="page-scroll" href="#about">
+                    <div class="mouse-icon">
+                        <div class="wheel"></div>
+                    </div>
+                </a>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
-    </nav>
+    </header>
+{% endblock %}
+
+{% block content %}
+
         <!--<section id="homepage" class="no-padding">
     </section>-->
     {#{ ez_render_field(content, 'image_banner', {
@@ -60,11 +61,11 @@
             class: 'hide img-banner-mobile'
         }
     }) }#}
-    {% if news|length > 0 %}
+    {#% if news|length > 0 %}
         {% include 'AppSiteBundle::content/parts/news.html.twig' with {'news': news} %}
-    {% endif %}
+    {% endif %#}
     {% include 'AppSiteBundle::content/parts/biography.html.twig' %}
-    {% if gallery_items|length %}
+    {#% if gallery_items|length %}
         {% include 'AppSiteBundle::content/parts/gallery.html.twig' with {'gallery_items': gallery_items} %}
-    {% endif %}
+    {% endif %#}
 {% endblock %}

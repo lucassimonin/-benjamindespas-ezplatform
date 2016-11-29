@@ -1,8 +1,10 @@
-app.global.title: Benjamin despas
-app.global.meta_title: Benjamin despas
+app.global.title: Jam despas
+app.global.meta_title: Jam despas
+app.title_site: 'Jam <strong>Despas</strong>'
 app.title.news: News
 app.title.biography: Biography
-app.title.gallery: Gallery
+app.title.gallery: Galleries
+app.title.gallery_show: Galery
 app.contact_me: Contact me
 app.filter.all: All
 app.filter.peinture: Paintings

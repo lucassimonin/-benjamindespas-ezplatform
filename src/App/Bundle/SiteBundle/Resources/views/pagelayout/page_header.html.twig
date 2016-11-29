@@ -2,29 +2,29 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<nav id="mainNav" class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header padding-navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="{{ path( 'ez_urlalias', {'locationId': rootLocationId}) }}">{{ 'app.title_site'|trans|raw }}</a>
+        </div>
+        <div class="pull-left backslash hidden-xs">/</div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-ben navbar-left">
 
-<h1 class="hide">{{ 'app.global.title'|trans }}</h1>
-<header>
-    <div class="header-content">
-        <div class="header-content-inner">
-            {{ ez_render_field(content, 'image_top', {
-                parameters: {
-                    alias: 'top_image',
-                    class: 'img-responsive img-header'
-                }
-            }) }}
+                <li>
+                    <a class="" href="{{ path( 'ez_urlalias', {'locationId': rootLocationId}) }}">{{ 'app.title.biography'|trans }}</a>
+                </li>
+                <li>
+                    <a class="last" href="{{ path( 'ez_urlalias', {'locationId': galleryLocationId}) }}">{{ 'app.title.gallery'|trans }}</a>
+                </li>
+            </ul>
         </div>
+        <!-- /.navbar-collapse -->
     </div>
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-xs-offset-4 col-xs-4">
-                <a class="page-scroll" href="#homepage">
-                    <div class="mouse-icon">
-                        <div class="wheel"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
-<div class="clearfix"></div>
+    <!-- /.container-fluid -->
+</nav>

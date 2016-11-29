@@ -1,0 +1,3 @@
+show_gallery:
+    path: /show-gallery/{id}
+    defaults: { _controller: AppSiteBundle:Gallery:show }

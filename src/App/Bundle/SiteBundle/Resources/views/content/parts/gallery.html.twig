@@ -1,42 +1,60 @@
-<section id="portfolio" class="wow fadeInUp">
-    <div class="container">
-        <div>
-            <h2>{{ 'app.title.gallery'|trans }}</h2>
-            <div class="pull-left content-filter">
-                <button class="filter active" data-filter=".all">{{ 'app.filter.all'|trans }}</button> - <button data-filter=".peinture" class="filter">{{ 'app.filter.peinture'|trans }}</button> - <button data-filter=".dessin" class="filter">{{ 'app.filter.dessin'|trans }}</button> - <button data-filter=".photo" class="filter">{{ 'app.filter.photo'|trans }}</button>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="grid">
-            {% for gallery_item in gallery_items %}
-                {% set imageAlias = ez_image_alias(gallery_item.getField('image'), gallery_item.versionInfo, 'gallery_image') %}
-                <div class="grid__item all {{ ez_field_value(gallery_item, 'type') }}" data-size="x">
-                    <a href="{{ imageAlias.uri }}" class="img-wrap">
-                        {{ ez_render_field(gallery_item, 'image', {
-                            parameters: {
-                                alias: 'gallery_image_thumb'
-                            }
-                        }) }}
-                        <div class="description description--grid">
-                            <h3>{{ ez_field_value(gallery_item, 'title') }}</h3>
-                            {{ ez_render_field(gallery_item, 'quote') }}
-                            <div class="details">
-                                <ul>
-                                    <li><i class="fa fa fa-paint-brush"></i><span>{{ ez_field_value(gallery_item, 'method') }}</span></li>
-                                    <li><i class="fa fa-info-circle"></i><span>{{ ez_field_value(gallery_item, 'size') }}</span></li>
-                                    <li><i class="fa fa fa-eur"></i><span>{{ 'app.contact_me'|trans }}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </a>
+{% extends "AppSiteBundle::pagelayout.html.twig" %}
+{% block style %}
+style="background-color:#3d5462"
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+
+                <div class="col-sm-6 bg-color">
+                    <h2>
+                        {{ 'app.title.gallery_show'|trans }} {{ ('app.filter.' ~ title_txt)|trans }}
+                    </h2>
+                    {{ ez_render_field(gallery, attribute_txt) }}
+
                 </div>
-            {% endfor %}
-        </div>
-        <div class="preview">
-            <button class="action action--close"><i class="fa fa-times"></i><span class="text-hidden">Close</span></button>
-            <div class="description description--preview"></div>
-        </div>
-        <div class="grid-filter hide">
-        </div>
+
+                <div class="col-sm-6">
+
+                    <div id="myCarousel" class="carousel multi-item-carousel slide">
+                        <!-- Carousel items -->
+                        {% if gallery_items|length > 0 %}
+                        <div class="carousel fdi-Carousel slide" id="galleryCarousel" data-interval="0">
+                            <div class="carousel-inner onebyone-carosel">
+                                {% for item in gallery_items %}
+                                    <div class="item {% if loop.index0 == 0 %} active {% endif %}">
+                                        <div class="col-md-12 item-picture">
+                                            <a href="#">
+                                                {{ ez_render_field(item, 'image', {
+                                                    parameters: {
+                                                        class: 'img-responsive'
+                                                    }
+                                                }) }}
+                                            </a>
+                                            <div class="text-center text-bottom">
+                                                <p class="title-gallery">{{ ez_render_field(item, 'title') }}</p>
+                                                <p><i>{{ ez_render_field(item, 'method') }}</i></p>
+                                                <p>{{ ez_render_field(item, 'size') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% if gallery_items|length > 1 %}
+                                <a class="left carousel-control" href="#galleryCarousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#galleryCarousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <!--/carousel-inner-->
+                        {% else %}
+                            No picture.
+                        {% endif %}
+                    </div><!--/myCarousel-->
+
+            </div>
+
     </div>
-</section>
+{% endblock %}

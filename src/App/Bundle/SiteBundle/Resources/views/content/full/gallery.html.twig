@@ -1,0 +1,46 @@
+{% extends "AppSiteBundle::pagelayout.html.twig" %}
+{% block style %}
+    style="background-color:#8599a4"
+{% endblock %}
+{% block content %}
+    <div class="container-fluid" id="all-gallery">
+        <div class="col-md-4">
+            <h1 class="gallery-title">{{ 'app.title.gallery'|trans }}</h1>
+        </div>
+        <div class="col-md-8" >
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="{{ path( 'show_gallery', {'id': 1} ) }}" class="hover-link">
+                    {{ ez_render_field(content, 'image_gl_drawings', {
+                        parameters: {
+                            class: 'img-responsive toppicture'
+                        }
+                    }) }}
+                        <span class="hover-text">Dessins</span>
+                    </a>
+                    </div>
+                    <div class="col-sm-4">
+                    <a href="{{ path( 'show_gallery', {'id': 0} ) }}" class="hover-link">
+                    {{ ez_render_field(content, 'image_gl_photos', {
+                        parameters: {
+                            class: 'img-responsive bottompicture'
+                        }
+                    }) }}
+                        <span class="hover-text">Photos</span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ path( 'show_gallery', {'id': 2} ) }}" class="hover-link">
+                    {{ ez_render_field(content, 'image_gl_paintings', {
+                        parameters: {
+                            class: 'img-responsive bigpicture'
+                        }
+                    }) }}
+                        <span class="hover-text">Peintures</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

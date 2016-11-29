@@ -9,11 +9,13 @@
             {% endblock %}
             {% include 'AppSiteBundle::pagelayout/page_meta.html.twig' %}
         </head>
-    <body id="page-top">
+    <body id="page-top" {% block style %}{% endblock %}>
+        {% block top_content %}{% endblock %}
         {% include 'AppSiteBundle::pagelayout/page_header.html.twig' %}
         {% block content %}{% endblock %}
-
+        {% block footer %}
         {% include 'AppSiteBundle::pagelayout/page_footer.html.twig' %}
+        {% endblock %}
         {% block footerScript %}
             {% include 'AppSiteBundle::pagelayout/page_footer_script.html.twig' %}
         {% endblock %}

@@ -7,6 +7,7 @@ use eZ\Publish\API\Repository\Values\Content\Query;
 use Symfony\Component\DependencyInjection\Container;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Operator;
 
 /**
  * CoreHelper Class
@@ -52,37 +53,33 @@ class CoreHelper
         $this->logger = $this->container->get('logger');
     }
 
-    /**
-     * Get latest news (default number = 3)
-     * @return array
-     */
-    public function getLatestNews()
+    public function getItemsGallery($type)
     {
-        $newsContentTypeIdentifier = $this->container->getParameter('app.new.content_type.identifier');
-        $listingNewsLimit = $this->container->getParameter('app.listing_news.homepage.limit');
-        $listingNewsLocationId = $this->container->getParameter('app.listing_news.locationid');
+        $galleryItemContentTypeIdentifier = $this->container->getParameter('app.item_gallery.content_type.identifier');
+        $galleryLocationId = $this->container->getParameter('app.gallery.locationid');
+
+        $fieldsData = ['attribute' => 'gallery_type', 'operator' => Operator::EQ, 'value' => $type];
 
         // Initialize latestNews
-        $latestNews = [];
+        $latestArticles = [];
 
         // Try loading all article under loaded location (listing news)
         try {
             // Generate criteria to get all article under authors listing news class
-            $criteriaLatestNews = $this->criteriaHelper->generateContentCriterionByParentLocationIdAndContentIdentifiersAndFieldsData($listingNewsLocationId, [$newsContentTypeIdentifier]);
+            $criteriaLatestArticles = $this->criteriaHelper->generateContentCriterionByParentLocationIdAndContentIdentifiersAndFieldsData($galleryLocationId, [$galleryItemContentTypeIdentifier], [$fieldsData]);
 
             // Building Query
-            $queryLatestNews = new Query();
-            $queryLatestNews->filter = $criteriaLatestNews;
-            $queryLatestNews->limit = $listingNewsLimit;
-            $queryLatestNews->sortClauses = array(
+            $queryLatestArticles = new Query();
+            $queryLatestArticles->filter = $criteriaLatestArticles;
+            $queryLatestArticles->sortClauses = array(
                 //new Location\Priority(Query::SORT_ASC),
                 new SortClause\DatePublished(Query::SORT_DESC)
             );
 
             // Getting results
-            $searchResultLatestNews = $this->repository->sudo(
-                function() use ($queryLatestNews) {
-                    return $this->searchService->findContent($queryLatestNews);
+            $searchResultLatestArticles = $this->repository->sudo(
+                function() use ($queryLatestArticles) {
+                    return $this->searchService->findContent($queryLatestArticles);
                 }
             );
 
@@ -97,13 +94,14 @@ class CoreHelper
         }
         //var_dump($searchResultLatestNews);die;
         // Building latest News tab
-        if (isset($searchResultLatestNews->searchHits)) {
-            foreach ($searchResultLatestNews->searchHits as $hit) {
-                array_push($latestNews, $hit->valueObject);
+        if (isset($searchResultLatestArticles->searchHits)) {
+            foreach ($searchResultLatestArticles->searchHits as $hit) {
+                array_push($latestArticles, $hit->valueObject);
             }
         }
 
-        return $latestNews;
+
+        return $latestArticles;
     }
 
     /**
@@ -140,6 +138,14 @@ class CoreHelper
     public function getCriteriaHelper()
     {
         return $this->criteriaHelper;
+    }
+
+    public function getContentByLocationId($locationId)
+    {
+        $locationService = $this->repository->getLocationService();
+        $contentService = $this->repository->getContentService();
+        $locationObject = $locationService->loadLocation($locationId);
+        return $contentService->loadContent($locationObject->contentId);
     }
 
 
