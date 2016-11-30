@@ -3,7 +3,7 @@
 style="background-color:#3d5462"
 {% endblock %}
 {% block content %}
-    <div class="container-fluid">
+    <div class="container-fluid" id="hgallery">
 
                 <div class="col-sm-6 bg-color">
                     <h2>
@@ -23,13 +23,13 @@ style="background-color:#3d5462"
                                 {% for item in gallery_items %}
                                     <div class="item {% if loop.index0 == 0 %} active {% endif %}">
                                         <div class="col-md-12 item-picture">
-                                            <a href="#">
+                                    {% if not ez_is_field_empty(item, 'facebook_url') %}<a href="{{ ez_field_value(item, 'facebook_url') }}" target="_blank">{% endif %}
                                                 {{ ez_render_field(item, 'image', {
                                                     parameters: {
                                                         class: 'img-responsive'
                                                     }
                                                 }) }}
-                                            </a>
+                                        {% if not ez_is_field_empty(item, 'facebook_url') %}</a>{% endif %}
                                             <div class="text-center text-bottom">
                                                 <p class="title-gallery">{{ ez_render_field(item, 'title') }}</p>
                                                 <p><i>{{ ez_render_field(item, 'method') }}</i></p>
@@ -50,7 +50,9 @@ style="background-color:#3d5462"
                         </div>
                         <!--/carousel-inner-->
                         {% else %}
-                            No picture.
+                            <div class="no-element">
+                               {{ 'app.title.no_element'|trans }}
+                            </div>
                         {% endif %}
                     </div><!--/myCarousel-->
 

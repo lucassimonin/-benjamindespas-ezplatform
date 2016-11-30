@@ -601,6 +601,14 @@ img::-moz-selection {
   z-index: 0;
 }
 
+.no-element {
+  margin-top: 30px;
+}
+
+#hgallery {
+  min-height: 100%;
+}
+
 .carousel-inner.onebyone-carosel { margin: auto; width: 90%; }
 .onebyone-carosel .active.left { left: -33.33%; }
 .onebyone-carosel .active.right { left: 33.33%; }
@@ -719,5 +727,8 @@ img::-moz-selection {
   .navbar-nav {
     float: left;
     margin: 0;
+  }
+  .no-element {
+    margin-left: -15px;
   }
 }

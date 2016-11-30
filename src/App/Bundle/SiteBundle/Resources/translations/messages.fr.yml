@@ -10,3 +10,4 @@ app.filter.all: Tous
 app.filter.peinture: Peintures
 app.filter.dessin: Dessins
 app.filter.photo: Photographies
+app.title.no_element: Pas d'objet à afficher.
