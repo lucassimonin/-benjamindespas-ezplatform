@@ -70,9 +70,9 @@ $( document ).ready(function() {
       positionTop = false;
     }
   });*/
-    /*$('body').on('contextmenu',function(e) {
+    $('body').on('contextmenu',function(e) {
         e.preventDefault(); return false;
-    });*/
+    });
 
     $('.multi-item-carousel').carousel({
         interval: false
