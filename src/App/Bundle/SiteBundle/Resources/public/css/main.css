@@ -284,7 +284,7 @@ footer a, footer a:hover, footer a:focus {
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus,
-.navbar-default .nav > li.active > a:active,
+.navbar-default .nav > li.active > a:active
 {
   color: #fff !important;
   background-color: transparent;
