@@ -260,8 +260,10 @@ footer a, footer a:hover, footer a:focus {
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
-.navbar-default .navbar-header .navbar-brand:focus {
+.navbar-default .navbar-header .navbar-brand:focus,
+.nav>li>a:hover, .nav>li>a:focus{
   color:#8599a4;
+  background-color: transparent;
 }
 .navbar-default .navbar-header .navbar-toggle {
   font-weight: 700;
@@ -281,7 +283,9 @@ footer a, footer a:hover, footer a:focus {
   color: #333;
 }
 .navbar-default .nav > li.active > a,
-.navbar-default .nav > li.active > a:focus {
+.navbar-default .nav > li.active > a:focus,
+.navbar-default .nav > li.active > a:active,
+{
   color: #fff !important;
   background-color: transparent;
 }
