@@ -38,7 +38,7 @@ class GalleryController extends Controller
 
         switch($id) {
             case 0:
-                $params['title_txt'] = 'peinture';
+                $params['title_txt'] = 'photo';
                 $params['attribute_txt'] = 'text_photos';
                 break;
             case 1:

@@ -16,8 +16,18 @@
                             class: 'img-responsive toppicture'
                         }
                     }) }}
-                        <span class="hover-text">Dessins</span>
+                        <span class="hover-text">{{ 'app.title.dessin'|trans }}</span>
                     </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="{{ path( 'show_gallery', {'id': 2} ) }}" class="hover-link">
+                            {{ ez_render_field(content, 'image_gl_paintings', {
+                                parameters: {
+                                    class: 'img-responsive bigpicture'
+                                }
+                            }) }}
+                            <span class="hover-text">{{ 'app.title.peinture'|trans }}</span>
+                        </a>
                     </div>
                     <div class="col-sm-4">
                     <a href="{{ path( 'show_gallery', {'id': 0} ) }}" class="hover-link">
@@ -26,19 +36,10 @@
                             class: 'img-responsive bottompicture'
                         }
                     }) }}
-                        <span class="hover-text">Photos</span>
+                        <span class="hover-text">{{ 'app.title.photo'|trans }}</span>
                     </a>
                 </div>
-                <div class="col-sm-4">
-                    <a href="{{ path( 'show_gallery', {'id': 2} ) }}" class="hover-link">
-                    {{ ez_render_field(content, 'image_gl_paintings', {
-                        parameters: {
-                            class: 'img-responsive bigpicture'
-                        }
-                    }) }}
-                        <span class="hover-text">Peintures</span>
-                    </a>
-                </div>
+
             </div>
         </div>
 
