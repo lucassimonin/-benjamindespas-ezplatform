@@ -201,6 +201,10 @@ footer a, footer a:hover, footer a:focus {
   background-color: #333;
 }
 
+.black-color {
+  color: #333;
+}
+
 .carousel-indicators {
   bottom: -45px;
 }

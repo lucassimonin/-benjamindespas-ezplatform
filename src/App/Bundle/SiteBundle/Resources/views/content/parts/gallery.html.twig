@@ -30,9 +30,9 @@ style="background-color:#3d5462"
                                                     }
                                                 }) }}
                                         {% if not ez_is_field_empty(item, 'facebook_url') %}</a>{% endif %}
-                                            <div class="text-center text-bottom">
-                                                <p class="title-gallery">{{ ez_render_field(item, 'title') }}</p>
-                                                <p><i>{{ ez_render_field(item, 'method') }}</i></p>
+                                            <div class="text-center text-bottom {% if ez_field_value(item, 'black_title') %}black-color{% endif %}">
+                                                <p class="title-gallery"><i>{{ ez_render_field(item, 'title') }}</i></p>
+                                                <p>{{ ez_render_field(item, 'method') }}</p>
                                                 <p>{{ ez_render_field(item, 'size') }}</p>
                                             </div>
                                         </div>
