@@ -14,7 +14,7 @@ class AppKernel extends Kernel
     /**
      * Returns an array of bundles to registers.
      *
-     * @return array An array of bundle instances.
+     * @return array an array of bundle instances.
      *
      * @api
      */
@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
             new eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle(),
             new eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle(),
+            new EzSystems\MultiFileUploadBundle\EzSystemsMultiFileUploadBundle(),
             new eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
             new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
@@ -46,6 +47,9 @@ class AppKernel extends Kernel
             new EzSystems\PlatformInstallerBundle\EzSystemsPlatformInstallerBundle(),
             new EzSystems\RepositoryFormsBundle\EzSystemsRepositoryFormsBundle(),
             new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
+            new EzSystems\EzContentOnTheFlyBundle\EzSystemsEzContentOnTheFlyBundle(),
+            new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
+            new JMS\TranslationBundle\JMSTranslationBundle(),
             new App\Bundle\SiteBundle\AppSiteBundle(),
         );
 
@@ -54,7 +58,7 @@ class AppKernel extends Kernel
             case 'behat':
                 $bundles[] = new EzSystems\BehatBundle\EzSystemsBehatBundle();
                 $bundles[] = new EzSystems\PlatformBehatBundle\EzPlatformBehatBundle();
-                // No break, test also needs dev bundles
+            // No break, test also needs dev bundles
             case 'dev':
                 $bundles[] = new eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle();
                 $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
