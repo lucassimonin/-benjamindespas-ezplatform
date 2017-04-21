@@ -5,7 +5,7 @@
         {% if lang != currentLanguage %}
         	{% do routeRef.set( "siteaccess", ezpublish.translationSiteAccess( lang ) ) %}
             <li class="padding-navbar no-hover">
-                <a class="no-padding no-hover" href="{{ url( routeRef ) }}"><span class="flag-icon flag-icon-{{ lang|lower|split('-')[1] }}"></span></a>
+                <a rel="alternate class="no-padding no-hover" href="{{ url( routeRef ) }}"><span class="flag-icon flag-icon-{{ lang|lower|split('-')[1] }}"></span></a>
             </li>
         {% endif %}
     {% endfor %}

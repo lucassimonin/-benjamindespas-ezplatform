@@ -15,26 +15,26 @@
                 <ul class="nav sociaux">
                     {% if not ez_is_field_empty(content, 'facebook_url') %}
                         <li>
-                            <a class="btn btn-social-icon btn-fb" href="{{ ez_field_value(content, 'facebook_url') }}" target="_blank"><i class="fa fa-facebook-official"></i></a>
+                            <a rel="nofollow" class="btn btn-social-icon btn-fb" href="{{ ez_field_value(content, 'facebook_url') }}" target="_blank"><i class="fa fa-facebook-official"></i></a>
                         </li>
                     {% endif %}
                     {% if not ez_is_field_empty(content, 'instagram_url') %}
                         <li>
-                            <a class="btn btn-social-icon btn-instagram" href="{{ ez_field_value(content, 'instagram_url') }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a rel="nofollow" class="btn btn-social-icon btn-instagram" href="{{ ez_field_value(content, 'instagram_url') }}" target="_blank"><i class="fa fa-instagram"></i></a>
                         </li>
                     {% endif %}
                     {% if not ez_is_field_empty(content, 'linkedin_url') %}
                         <li>
-                            <a class="btn btn-social-icon btn-linkedin" href="{{ ez_field_value(content, 'linkedin_url') }}" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+                            <a rel="nofollow" class="btn btn-social-icon btn-linkedin" href="{{ ez_field_value(content, 'linkedin_url') }}" target="_blank"><i class="fa fa-linkedin-square"></i></a>
                         </li>
                     {% endif %}
                     {% if not ez_is_field_empty(content, 'email') %}
                         <li>
-                            <a class="btn btn-social-icon btn-contact page-scroll" href="mailto:{{ ez_field_value(content, 'email') }}"><i class="fa fa-envelope-o"></i></a>
+                            <a rel="nofollow" class="btn btn-social-icon btn-contact page-scroll" href="mailto:{{ ez_field_value(content, 'email') }}"><i class="fa fa-envelope-o"></i></a>
                         </li>
                     {% endif %}
                 </ul>
-                <a class="page-scroll" href="#about">
+                <a rel="nofollow" class="page-scroll" href="#about">
                     <div class="mouse-icon">
                         <div class="wheel"></div>
                     </div>

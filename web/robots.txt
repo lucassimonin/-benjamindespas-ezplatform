@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /ez
+Sitemap: https://jamdespas.com/sitemap.xml

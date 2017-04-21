@@ -4,3 +4,4 @@ parameters:
     app.listing_news.homepage.limit: 3
     app.new.content_type.identifier: news
     app.item_gallery.content_type.identifier: item_gallery
+    app.cache.high.ttl: 3600

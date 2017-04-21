@@ -10,7 +10,7 @@
         <div class="col-md-8" >
             <div class="row">
                 <div class="col-sm-4">
-                    <a href="{{ path( 'show_gallery', {'id': 1} ) }}" class="hover-link">
+                    <a rel="tag" href="{{ path( 'show_gallery', {'id': 1} ) }}" class="hover-link">
                     {{ ez_render_field(content, 'image_gl_drawings', {
                         parameters: {
                             class: 'img-responsive toppicture'
@@ -20,7 +20,7 @@
                     </a>
                     </div>
                     <div class="col-sm-4">
-                        <a href="{{ path( 'show_gallery', {'id': 2} ) }}" class="hover-link">
+                        <a rel="tag" href="{{ path( 'show_gallery', {'id': 2} ) }}" class="hover-link">
                             {{ ez_render_field(content, 'image_gl_paintings', {
                                 parameters: {
                                     class: 'img-responsive bigpicture'
@@ -30,7 +30,7 @@
                         </a>
                     </div>
                     <div class="col-sm-4">
-                    <a href="{{ path( 'show_gallery', {'id': 0} ) }}" class="hover-link">
+                    <a rel="tag" href="{{ path( 'show_gallery', {'id': 0} ) }}" class="hover-link">
                     {{ ez_render_field(content, 'image_gl_photos', {
                         parameters: {
                             class: 'img-responsive bottompicture'

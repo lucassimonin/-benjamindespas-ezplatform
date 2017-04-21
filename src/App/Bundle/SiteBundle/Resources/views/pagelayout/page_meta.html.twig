@@ -7,4 +7,10 @@
 </title>
 {% if content is defined and not ez_is_field_empty(content, 'meta_description') %}
     <meta name="description" content="{{ ez_field_value(content, 'meta_description') }}">
+{% else %}
+    <meta name="description" content="Jam est un artiste plasticien, né en 1990 à Reims. Passionné de dessin dès son plus jeune âge, il débute ses études artistiques à l'université de Valenciennes.">
 {% endif %}
+
+<meta name="robots" content="INDEX, FOLLOW">
+<meta name="keywords" content="Peintre, artiste, dessin, Montpellier, nude, Jam, Despas">
+<meta name="referrer" content="origin">
